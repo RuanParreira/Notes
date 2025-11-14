@@ -10,7 +10,7 @@
                     <p class="display-6 mb-0">EDIT NOTE</p>
                 </div>
                 <div class="col text-end">
-                    <a href="#" class="btn btn-outline-danger">
+                    <a href="{{ route('home') }}" class="btn btn-outline-danger">
                         <i class="fa-solid fa-xmark"></i>
                     </a>
                 </div>
