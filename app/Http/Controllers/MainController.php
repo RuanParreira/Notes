@@ -17,13 +17,12 @@ class MainController extends Controller
         /** @var User $user */
         $user = Auth::user();
         $notes = $user->notes()->get();
-        return view('home', compact('user', 'notes'));
+        return view('home', compact('notes'));
     }
 
     public function newNote()
     {
-        $user = Auth::user();
-        return view('note', compact('user'));
+        return view('note');
     }
 
     public function store(Request $request)
@@ -40,6 +39,13 @@ class MainController extends Controller
         return redirect()->route('home');
     }
 
+    public function delete($id)
+    {
+        $note = Note::findOrFail($id);
+        $this->authorize('delete', $note);
+        return view('deleteNote', compact('note'));
+    }
+
     public function destroy($id)
     {
         $note = Note::findOrFail($id);
@@ -51,10 +57,9 @@ class MainController extends Controller
 
     public function edit($id)
     {
-        $user = Auth::user();
         $note = Note::findOrFail($id);
         $this->authorize('update', $note);
-        return view('editNote', compact('user', 'note'));
+        return view('editNote', compact('note'));
     }
 
     public function update(Request $request, $id)

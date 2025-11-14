@@ -30,12 +30,11 @@
                                         <a href="{{ route('edit.note', $note->id) }}"
                                             class="btn btn-outline-secondary btn-sm mx-1"><i
                                                 class="fa-regular fa-pen-to-square"></i></a>
-                                        <form action="{{ route('delete.note', $note->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-outline-danger btn-sm mx-1"><i
-                                                    class="fa-regular fa-trash-can"></i></button>
-                                        </form>
+
+                                        <a href="{{ route('delete.note', $note->id) }}"
+                                            class="btn btn-outline-danger btn-sm mx-1"><i
+                                                class="fa-regular fa-trash-can"></i></a>
+
                                     </div>
                                 </div>
                                 <hr>
